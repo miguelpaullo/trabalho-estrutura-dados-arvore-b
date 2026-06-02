@@ -6,7 +6,7 @@ typedef struct NoB {
     int folha; // 1 se for folha, 0 caso contrário
 
     char **chaves; //Vetor de strings
-    struct NoB **filhos;
+    struct NoB **filhos; //Vetor de ponteiros para os filhos
     struct NoB *pai; //guardar o pai para facilitar a inserção e divisão de páginas
 
 } NoB;
@@ -28,7 +28,7 @@ void inserirNaPagina(NoB *pagina, char *chave, NoB *filhoDireita);
 
 void dividirPagina(ArvoreB *arvore, NoB *pagina, char **chavePromovida, NoB **novoNo);
 
-void tratarCisao(ArvoreB *arvore, NoB *pagina);
+void tratarSplit(ArvoreB *arvore, NoB *pagina);
 
 void inserir(ArvoreB *arvore, char *chave);
 

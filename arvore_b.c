@@ -133,12 +133,6 @@ void dividirPagina( ArvoreB *arvore, NoB *pagina, char **chavePromovida, NoB **n
         (*novoNo)->chaves[i] = pagina->chaves[d + 1 + i];
     }
 
-    /*
-    //Limpando as chaves da página original que foram movidas para o novo nó
-    for(i = d; i < 2 * d + 1; i++) {
-        pagina->chaves[i] = NULL;
-    }*/
-
     //Se não for folha -> copiamos os filhos
     if(!pagina->folha)
     {
@@ -160,7 +154,7 @@ void dividirPagina( ArvoreB *arvore, NoB *pagina, char **chavePromovida, NoB **n
     (*novoNo)->pai = pagina->pai;
 }
 
-void tratarCisao(ArvoreB *arvore, NoB *pagina) {
+void tratarSplit(ArvoreB *arvore, NoB *pagina) {
     //Tratando a divisão de páginas e a promoção de chaves para o pai
 
     //Variáveis auxiliares
@@ -247,7 +241,7 @@ void inserir(ArvoreB *arvore, char *chave) {
     inserirNaPagina(pagina, novaChave, NULL);
 
     //Verificando se a página ficou cheia e precisa ser dividida
-    tratarCisao(arvore, pagina);
+    tratarSplit(arvore, pagina);
 }
 
 void carregarPokemon(ArvoreB *arvore) {
